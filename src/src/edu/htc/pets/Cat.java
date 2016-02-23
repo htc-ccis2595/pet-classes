@@ -1,20 +1,18 @@
 package edu.htc.pets;
 
 /**
- * Created by marymosman on 2/1/16.
+ * Created by mary mosman on 2/1/16.
  *
  * Simple Cat class.
  *
  * Cats have a name and age.
  * There is also a function to calculate their human age.
  */
-public class Cat extends Pet{
+public class Cat extends Pet {
 
-    public Cat(String name)
-    {
+    public Cat(String name){
         super(name);
     }
-
 
     public double getHumanAge() {
         double humanAge = 0;
@@ -34,8 +32,5 @@ public class Cat extends Pet{
         return humanAge;
     }
 
-    public String toString() {
-        return "Cat: " + getName();
-    }
 
 }

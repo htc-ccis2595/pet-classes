@@ -7,19 +7,18 @@ public class Main {
         // Create the cats
         Cat[] myCats = new Cat[3];
 
-        Cat cat = new Cat();
+        Cat cat = new Cat("Jennyanydots");
         cat.setAge(1);
-        cat.setName("Jennyanydots");
+
         myCats[0] = cat;
 
-        cat = new Cat();
+        cat = new Cat("Rum Tum Tugger");
         cat.setAge(2);
-        cat.setName("Rum Tum Tugger");
         myCats[1] = cat;
 
-        cat = new Cat();
+        cat = new Cat("Deuteronomy");
         cat.setAge(20);
-        cat.setName("Deuteronomy");
+
         myCats[2] = cat;
 
         // Print the cat info
@@ -61,7 +60,8 @@ public class Main {
         System.out.println();
         System.out.println("Showing the dog info...");
 
-        for (Dog current : myDogs) {
+        for (Dog current : myDogs) //FOR EACH LOOP
+        {
             System.out.println("Dog " + current.getName() + " is " + current.getAge() + " which is " + current.getHumanAge());
         }
 
@@ -74,5 +74,28 @@ public class Main {
         System.out.println("Printing a cat, which has a toString function to print pretty: " + cat);
         System.out.println("Printing a dog, which does not have a toString function: " + dog);
         System.out.println();
+
+
+        //New array of 6 pets
+        System.out.println("Printing Pets:");
+        Pet[] myPets = new Pet[6];
+        myPets[0] = myCats[0];
+        myPets[1] = myCats[1];
+        myPets[2] = myCats[2];
+
+        myPets[3] = myDogs[0];
+        myPets[4] = myDogs[1];
+        myPets[5] = myDogs[2];
+
+        for (Pet current : myPets) //FOR EACH LOOP
+        {
+            System.out.println("Pet:  " + current.getName() + " is " + current.getAge()
+                    + " which is " + current.getHumanAge() + " human years.");
+        }
+
+        //Generic Pet
+        //Pet pet1 = new Pet("Pet1");
+        //System.out.println(pet1);
+        //Cannot make an instance of abstract class
     }
 }
