@@ -68,6 +68,32 @@ public class Main {
             System.out.println("Dog " + current.getName() + " is " + current.getAge() + " which is " + current.getHumanAge());
         }
 
+        //Create the Turles
+        Turtle[] myTurtles = new Turtle[3];
+
+        Turtle turtle = new Turtle("Jive");
+        turtle.setAge(14);
+        myTurtles[0] = turtle;
+
+        turtle = new Turtle("Stone");
+        turtle.setAge(2);
+        myTurtles[1] = turtle;
+
+        turtle = new Turtle("Sam");
+        turtle.setAge(25);
+        myTurtles[2] = turtle;
+
+        System.out.println();
+        System.out.println("Showing the Turtle info....");
+
+        for(Turtle current : myTurtles){
+            System.out.println("Turtle " +current.getName() + " is " +current.getAge()+  " which is " + current.getHumanAge());
+        }
+        //System.out.println(myTurtles);
+
+
+
+
 
         //Code Question 3 - Put a dog in the Cat[] - compile error, incompatible types
         //myCats[0] = dog;
@@ -82,18 +108,37 @@ public class Main {
         //New Stuff
         System.out.println();
         System.out.println("Printing all the pets");
-        Pet[] myPets = new Pet[6];
+        Pet[] myPets = new Pet[9];
         myPets[0] = myCats[0];
         myPets[1] = myCats[1];
         myPets[2] = myCats[2];
         myPets[3] = myDogs[0];
         myPets[4] = myDogs[1];
         myPets[5] = myDogs[2];
+        myPets[6] = myTurtles[0];
+        myPets[7] = myTurtles[1];
+        myPets[8] = myTurtles[2];
 
         for (Pet current : myPets) {
             System.out.println("Pet " + current.getName() + " is " + current.getAge() + " which is " + current.getHumanAge() +" human years");
 
-            //If I'm a dog, print my trick
+            //If I'm a dog, print my sound
+            if(current instanceof Audible){
+                Audible curAud =(Audible) current;
+                curAud.makeNoise();
+                System.out.println();
+            }
+
+            else
+            {
+                System.out.println("I am a Turtle and I am silent");
+                System.out.println();
+            }
+//            if(current instanceof Turtle){
+//                System.out.println("I am a Turtle and I am silent");
+//            }
+
+           // If I'm a dog, print my trick
             if(current instanceof  Dog){
                 Dog  curDog = (Dog)current;
                 curDog.getTrickName();
