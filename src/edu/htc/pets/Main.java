@@ -50,6 +50,23 @@ public class Main {
         dog.setAge(2);
         myDogs[2] = dog;
 
+
+        Turtle[] myTurtles = new Turtle[3];
+
+        Turtle turtle = new Turtle("Romello");
+        turtle.setAge(15);
+        myTurtles[0] = turtle;
+
+        Turtle turtle1 = new Turtle("Randy");
+        turtle.setAge(12);
+        myTurtles[1] = turtle1;
+
+        Turtle turtle2 = new Turtle("Jordanian");
+        turtle.setAge(9);
+        myTurtles[2] = turtle2;
+
+
+
         // Code question 2.  Nameless dog is a compile error - name needed for constructor
         //Dog namelessDog = new Dog();
 
@@ -75,16 +92,24 @@ public class Main {
         // New Stuff
         System.out.println();
         System.out.println("Printing all the pets: ");
-        Pet[] myPets = new Pet[6];
+        Pet[] myPets = new Pet[9];
         myPets[0] = myCats[0];
         myPets[1] = myCats[1];
         myPets[2] = myCats[2];
         myPets[3] = myDogs[0];
         myPets[4] = myDogs[1];
         myPets[5] = myDogs[2];
+        myPets[6] = myTurtles[0];
+        myPets[7] = myTurtles[1];
+        myPets[8] = myTurtles[2];
 
         for (Pet current : myPets) {
             System.out.println("Pet " + current.getName() + " is " + current.getAge() + " which is " + current.getHumanAge() + " human years.");
+            if(current instanceof Audible) {
+                Audible currentpet = (Audible)current;
+                currentpet.makeSound();
+            }
+
 
             //If I'm a dog, print my trick
             if (current instanceof Dog){
@@ -129,6 +154,10 @@ public class Main {
 
         // But if I am sure that it is really a Pet I can cast it to a Pet object
         Pet yetAnotherPet = (Pet)list.get(0);
+
+
+
+
 
 
     }
