@@ -5,9 +5,18 @@ package edu.htc.pets;
  */
 public class Dog extends Pet {
 
-    public Dog(String name)
-    {
+    private String trickName;
+
+    public Dog(String name){
         super(name);
+    }
+
+    public String getTrickName() {
+        return trickName;
+    }
+
+    public void setTrickName(String trickName) {
+        this.trickName = trickName;
     }
 
     public double getHumanAge() {
