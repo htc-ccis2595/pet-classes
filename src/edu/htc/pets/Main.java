@@ -1,6 +1,7 @@
 package edu.htc.pets;
 
 import java.util.ArrayList;
+import edu.htc.pets.*;
 
 public class Main {
 
@@ -61,6 +62,7 @@ public class Main {
         for (Dog current : myDogs) {
             System.out.println("Dog " + current.getName() + " is " + current.getAge() + " which is " + current.getHumanAge());
         }
+        System.out.println();
 
         //Code Question 3 - Put a dog in the Cat[] - compile error, incompatible types
         //myCats[0] = dog;
@@ -70,21 +72,53 @@ public class Main {
 //        System.out.println("Printing a cat, which has a toString function to print pretty: " + cat);
 //        System.out.println("Printing a dog, which does not have a toString function: " + dog);
 //        System.out.println();
+        
+        //Turtles are Rad
+        Turtle[] myTurtles = new Turtle[3];
+
+        Turtle turtle = new Turtle("Larry");
+        turtle.setAge(1);
+        myTurtles[0] = turtle;
+
+        turtle = new Turtle("Jack Sparrow, but Slower");
+        turtle.setAge(2);
+        myTurtles[1] = turtle;
+
+        turtle = new Turtle("Dexter");
+        turtle.setAge(20);
+        myTurtles[2] = turtle;
+
+        // Print the turtle info
+        System.out.println("Showing the turtle info...");
+
+        for (int i=0; i<myTurtles.length; i++) {
+            Turtle current = myTurtles[i];
+            System.out.println("Turtle " + current.getName() + " is " + current.getAge() + " which is " + current.getHumanAge());
+        }
+
 
 
         // New Stuff
         System.out.println();
         System.out.println("Printing all the pets: ");
-        Pet[] myPets = new Pet[6];
+        Pet[] myPets = new Pet[9];
         myPets[0] = myCats[0];
         myPets[1] = myCats[1];
         myPets[2] = myCats[2];
         myPets[3] = myDogs[0];
         myPets[4] = myDogs[1];
         myPets[5] = myDogs[2];
+        myPets[6] = myTurtles[0];
+        myPets[7] = myTurtles[1];
+        myPets[8] = myTurtles[2];
+        
 
         for (Pet current : myPets) {
             System.out.println("Pet " + current.getName() + " is " + current.getAge() + " which is " + current.getHumanAge() + " human years.");
+
+            if (current instanceof Audible) {
+                ((Audible) current).audible();
+            }
 
             //If I'm a dog, print my trick
             if (current instanceof Dog){
@@ -94,7 +128,7 @@ public class Main {
 
             //This causes an error when we hit our first Dog object - always check using instanceof before casting
             //Cat curCat = (Cat)current;
-
+            System.out.println();
         }
 
         Pet somePet = myPets[3];
