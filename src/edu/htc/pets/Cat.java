@@ -1,4 +1,5 @@
 package edu.htc.pets;
+import edu.htc.pets.*;
 
 /**
  * Created by mary mosman on 2/1/16.
@@ -32,5 +33,7 @@ public class Cat extends Pet {
         return humanAge;
     }
 
-
+    public void makeSound(){
+        System.out.println("Meow");
+    }
 }

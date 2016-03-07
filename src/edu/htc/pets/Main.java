@@ -130,6 +130,41 @@ public class Main {
         // But if I am sure that it is really a Pet I can cast it to a Pet object
         Pet yetAnotherPet = (Pet)list.get(0);
 
+        //Create new turtles
 
+        Turtle mike = new Turtle("Mike");
+        Turtle don = new Turtle("Don");
+        Turtle ralph = new Turtle ("Ralph");
+        Turtle leo = new Turtle("Leo");
+
+        mike.setAge(5);
+        don.setAge(3);
+        ralph.setAge(1);
+        leo.setAge(2);
+
+        petList.add(mike);
+        petList.add(don);
+        petList.add(ralph);
+        petList.add(leo);
+
+        System.out.println();
+        System.out.println("Printing all the pets: ");
+        for (Pet current : petList) {
+            System.out.println("Pet " + current.getName() + " is " + current.getAge() + " which is " + current.getHumanAge() + " human years.");
+        }
+
+        System.out.println();
+        System.out.println("Here is what each pet has to say: ");
+        for (Pet current : petList){
+            if (current instanceof Cat){
+                System.out.print(current.getName() + " says: ");
+                cat.makeSound();
+            }
+            else if (current instanceof Dog){
+                System.out.print(current.getName() + " says: ");
+                dog.makeSound();
+            }
+            else System.out.println(current.getName() + " is silent.");
+        }
     }
 }

@@ -1,4 +1,5 @@
 package edu.htc.pets;
+import edu.htc.pets.*;
 
 /**
  * Created by marymosman on 2/1/16.
@@ -33,5 +34,9 @@ public class Dog extends Pet {
         }
 
         return humanAge;
+    }
+
+    public void makeSound(){
+        System.out.println("Woof");
     }
 }
