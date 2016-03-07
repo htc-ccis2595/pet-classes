@@ -29,11 +29,6 @@ public class Main {
             System.out.println("Cat " + current.getName() + " is " + current.getAge() + " which is " + current.getHumanAge());
         }
 
-        // Code question 1.  Nameless cat works fine
-        //Cat nameless = new Cat();  no longer works fine
-        //System.out.println();
-        //System.out.println("Nameless Cat's name: " + nameless.getName());
-
         // Create the dogs
         Dog[] myDogs = new Dog[3];
 
@@ -50,9 +45,6 @@ public class Main {
         dog.setAge(2);
         myDogs[2] = dog;
 
-        // Code question 2.  Nameless dog is a compile error - name needed for constructor
-        //Dog namelessDog = new Dog();
-
 
         // Print the dog info
         System.out.println();
@@ -62,26 +54,45 @@ public class Main {
             System.out.println("Dog " + current.getName() + " is " + current.getAge() + " which is " + current.getHumanAge());
         }
 
-        //Code Question 3 - Put a dog in the Cat[] - compile error, incompatible types
-        //myCats[0] = dog;
 
-        //Code Question 4 - Print a cat & dog
-//        System.out.println();
-//        System.out.println("Printing a cat, which has a toString function to print pretty: " + cat);
-//        System.out.println("Printing a dog, which does not have a toString function: " + dog);
-//        System.out.println();
+        //Create Turtles
+        Turtle[] myTurtles = new Turtle[3];
+
+        Turtle turtle = new Turtle("Lucy");
+        turtle.setAge(1);
+        myTurtles[0] = turtle;
+
+        turtle = new Turtle("Leo");
+        turtle.setAge(2);
+        myTurtles[1] = turtle;
+
+        turtle = new Turtle("Ninja");
+        turtle.setAge(20);
+        myTurtles[2] = turtle;
+
+        // Print the turtle info
+        System.out.println();
+        System.out.println("Showing the turtle info...");
+
+        for (int i=0; i<myTurtles.length; i++) {
+            Turtle current = myTurtles[i];
+            System.out.println("Turtle " + current.getName() + " is " + current.getAge() + " which is " + current.getHumanAge());
+        }
 
 
         // New Stuff
         System.out.println();
-        System.out.println("Printing all the pets: ");
-        Pet[] myPets = new Pet[6];
+        System.out.println("Printing all the pets and their sounds: ");
+        Pet[] myPets = new Pet[9];
         myPets[0] = myCats[0];
         myPets[1] = myCats[1];
         myPets[2] = myCats[2];
         myPets[3] = myDogs[0];
         myPets[4] = myDogs[1];
         myPets[5] = myDogs[2];
+        myPets[6] = myTurtles[0];
+        myPets[7] = myTurtles[1];
+        myPets[8] = myTurtles[2];
 
         for (Pet current : myPets) {
             System.out.println("Pet " + current.getName() + " is " + current.getAge() + " which is " + current.getHumanAge() + " human years.");
@@ -92,21 +103,15 @@ public class Main {
                 curDog.getTrickName();
             }
 
+            if (current instanceof Audible){
+                Audible curPet = (Audible)current;
+                curPet.makeSound();
+            }
+
             //This causes an error when we hit our first Dog object - always check using instanceof before casting
             //Cat curCat = (Cat)current;
 
         }
-
-        Pet somePet = myPets[3];
-        // Can't do this.  Only Dog objects have getTrickName method
-        //somePet.getTrickName();
-
-        //Make a generic Pet
-        System.out.println();
-        // Can't do this now that the Pet class is abstract
-        //System.out.println("Printing the generic Pet: ");
-        //Pet something = new Pet("Mystery Pet");
-        //System.out.println(something);
 
 
         //Put the Pets into an ArrayList of Pets
