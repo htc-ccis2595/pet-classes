@@ -1,5 +1,4 @@
 package edu.htc.pets;
-package edu.htc.pets;
 
 /**
  * Created by mary mosman on 2/1/16.
@@ -9,7 +8,7 @@ package edu.htc.pets;
  * Cats have a name and age.
  * There is also a function to calculate their human age.
  */
-public class Cat extends Pet {
+public class Cat extends Pet implements Audible {
 
     public Cat(String name){
         super(name);
@@ -31,6 +30,10 @@ public class Cat extends Pet {
         }
 
         return humanAge;
+    }
+
+    public void makeNoise() {
+        System.out.println("Meeeeoww");
     }
 
 

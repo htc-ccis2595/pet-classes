@@ -50,6 +50,21 @@ public class Main {
         dog.setAge(2);
         myDogs[2] = dog;
 
+        //I like TURTLES!
+        Turtle[] myTurtles = new Turtle[3];
+
+        Turtle turt1 = new Turtle ("Taco");
+        turt1.setAge(5);
+        myTurtles[0] = turt1;
+
+        Turtle turt2 = new Turtle ("Izzy");
+        turt2.setAge(15);
+        myTurtles[1] = turt2;
+
+        Turtle turt3 = new Turtle ("Hubert");
+        turt3.setAge(40);
+        myTurtles[2] = turt3;
+
         // Code question 2.  Nameless dog is a compile error - name needed for constructor
         //Dog namelessDog = new Dog();
 
@@ -75,27 +90,44 @@ public class Main {
         // New Stuff
         System.out.println();
         System.out.println("Printing all the pets: ");
-        Pet[] myPets = new Pet[6];
+        Pet[] myPets = new Pet[9];
         myPets[0] = myCats[0];
         myPets[1] = myCats[1];
         myPets[2] = myCats[2];
         myPets[3] = myDogs[0];
         myPets[4] = myDogs[1];
         myPets[5] = myDogs[2];
+        //Adding TURTLES!
+        myPets[6] = myTurtles[0];
+        myPets[7] = myTurtles[1];
+        myPets[8] = myTurtles[2];
 
         for (Pet current : myPets) {
             System.out.println("Pet " + current.getName() + " is " + current.getAge() + " which is " + current.getHumanAge() + " human years.");
+        }
+            System.out.println("Let's find out what each of our pet friends have to say! ");
 
-            //If I'm a dog, print my trick
-            if (current instanceof Dog){
-                Dog curDog = (Dog)current;
-                curDog.getTrickName();
+            for (Pet current : myPets) {
+                //If I'm a dog, print my trick
+                if (current instanceof Dog) {
+                    Dog curDog = (Dog) current;
+                    curDog.getTrickName();
+                    System.out.print(current.getName() + " say's: ");
+                    cat.makeNoise();
+                } else if (current instanceof Cat) {
+                    System.out.print(current.getName() + " say's: ");
+                    dog.makeNoise();
+
+                } else System.out.println(current.getName() + " Say's: Nothing at all because he/she is silent!");
             }
+
+
+
 
             //This causes an error when we hit our first Dog object - always check using instanceof before casting
             //Cat curCat = (Cat)current;
 
-        }
+
 
         Pet somePet = myPets[3];
         // Can't do this.  Only Dog objects have getTrickName method
