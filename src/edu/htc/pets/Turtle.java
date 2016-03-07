@@ -1,19 +1,12 @@
 package edu.htc.pets;
 
 /**
- * Created by mary mosman on 2/1/16.
- *
- * Simple Cat class.
- *
- * Cats have a name and age.
- * There is also a function to calculate their human age.
+ * Created by Owner on 3/7/2016.
  */
-public class Cat extends Pet implements Audible {
-
-    public Cat(String name){
+public class Turtle extends Pet implements Audible {
+    public Turtle(String name){
         super(name);
     }
-
 
     public double getHumanAge() {
         double humanAge = 0;
@@ -33,9 +26,8 @@ public class Cat extends Pet implements Audible {
         return humanAge;
     }
 
-
     @Override
     public void makeSound() {
-        System.out.println(getName() + " says Meow");
+        System.out.println(getName() + " makes no sound");
     }
 }

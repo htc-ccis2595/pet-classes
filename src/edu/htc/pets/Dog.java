@@ -3,44 +3,42 @@ package edu.htc.pets;
 /**
  * Created by marymosman on 2/1/16.
  */
-public class Dog {
+public class Dog extends Pet implements Audible{
 
-    private String name;
-    private int age;
+    private String trickName;
+
 
     public Dog(String name){
-        this.name = name;
+        super(name);
+
     }
 
-    public String getName() {
-        return name;
+    public String getTrickName() {
+        return trickName;
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public int getAge() {
-        return age;
-    }
-
-    public void setAge(int age) {
-        this.age = age;
+    public void setTrickName(String trickName) {
+        this.trickName = trickName;
     }
 
     public double getHumanAge() {
         double humanAge = 0;
 
-        if (age <= 2){
-            humanAge = age * 10.5;
+        if (getAge() <= 2){
+            humanAge = getAge() * 10.5;
         } else {
             // first two years, gets you 21 human years
             humanAge = 21;
 
             // every other year after is 4 human years
-            humanAge += 4 * (age-2);
+            humanAge += 4 * (getAge()-2);
         }
 
         return humanAge;
+    }
+
+    @Override
+    public void makeSound() {
+        System.out.println(getName() + " says Woof");
     }
 }

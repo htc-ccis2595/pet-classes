@@ -1,5 +1,7 @@
 package edu.htc.pets;
 
+import java.util.ArrayList;
+
 public class Main {
 
     public static void main(String[] args) {
@@ -7,19 +9,16 @@ public class Main {
         // Create the cats
         Cat[] myCats = new Cat[3];
 
-        Cat cat = new Cat();
+        Cat cat = new Cat("Jennyanydots");
         cat.setAge(1);
-        cat.setName("Jennyanydots");
         myCats[0] = cat;
 
-        cat = new Cat();
+        cat = new Cat("Rum Tum Tugger");
         cat.setAge(2);
-        cat.setName("Rum Tum Tugger");
         myCats[1] = cat;
 
-        cat = new Cat();
+        cat = new Cat("Deuteronomy");
         cat.setAge(20);
-        cat.setName("Deuteronomy");
         myCats[2] = cat;
 
         // Print the cat info
@@ -29,14 +28,6 @@ public class Main {
             Cat current = myCats[i];
             System.out.println("Cat " + current.getName() + " is " + current.getAge() + " which is " + current.getHumanAge());
         }
-
-
-
-        // Code question 1.  Nameless cat works fine
-        Cat nameless = new Cat();
-        System.out.println();
-        System.out.println("Nameless Cat's name: " + nameless.getName());
-
 
         // Create the dogs
         Dog[] myDogs = new Dog[3];
@@ -50,11 +41,9 @@ public class Main {
         myDogs[1] = dog;
 
         dog = new Dog("Ein");
+        dog.setTrickName("Fetch");
         dog.setAge(2);
         myDogs[2] = dog;
-
-        // Code question 2.  Nameless dog is a compile error - name needed for constructor
-        //Dog namelessDog = new Dog();
 
 
         // Print the dog info
@@ -66,13 +55,87 @@ public class Main {
         }
 
 
-        //Code Question 3 - Put a dog in the Cat[] - compile error, incompatible types
-        //myCats[0] = dog;
+        //Create Turtles
+        Turtle[] myTurtles = new Turtle[3];
 
-        //Code Question 4 - Print a cat & dog
+        Turtle turtle = new Turtle("Lucy");
+        turtle.setAge(1);
+        myTurtles[0] = turtle;
+
+        turtle = new Turtle("Leo");
+        turtle.setAge(2);
+        myTurtles[1] = turtle;
+
+        turtle = new Turtle("Ninja");
+        turtle.setAge(20);
+        myTurtles[2] = turtle;
+
+        // Print the turtle info
         System.out.println();
-        System.out.println("Printing a cat, which has a toString function to print pretty: " + cat);
-        System.out.println("Printing a dog, which does not have a toString function: " + dog);
+        System.out.println("Showing the turtle info...");
+
+        for (int i=0; i<myTurtles.length; i++) {
+            Turtle current = myTurtles[i];
+            System.out.println("Turtle " + current.getName() + " is " + current.getAge() + " which is " + current.getHumanAge());
+        }
+
+
+        // New Stuff
         System.out.println();
+        System.out.println("Printing all the pets and their sounds: ");
+        Pet[] myPets = new Pet[9];
+        myPets[0] = myCats[0];
+        myPets[1] = myCats[1];
+        myPets[2] = myCats[2];
+        myPets[3] = myDogs[0];
+        myPets[4] = myDogs[1];
+        myPets[5] = myDogs[2];
+        myPets[6] = myTurtles[0];
+        myPets[7] = myTurtles[1];
+        myPets[8] = myTurtles[2];
+
+        for (Pet current : myPets) {
+            System.out.println("Pet " + current.getName() + " is " + current.getAge() + " which is " + current.getHumanAge() + " human years.");
+
+            //If I'm a dog, print my trick
+            if (current instanceof Dog){
+                Dog curDog = (Dog)current;
+                curDog.getTrickName();
+            }
+
+            if (current instanceof Audible){
+                Audible curPet = (Audible)current;
+                curPet.makeSound();
+            }
+
+            //This causes an error when we hit our first Dog object - always check using instanceof before casting
+            //Cat curCat = (Cat)current;
+
+        }
+
+
+        //Put the Pets into an ArrayList of Pets
+        ArrayList<Pet> petList = new ArrayList<Pet>();
+        for (Pet myPet : myPets){
+            petList.add(myPet);
+        }
+
+        //Put the Pets into an ArrayList of Objects (not Pet)
+        ArrayList list = new ArrayList();
+        for (Pet myPet : myPets){
+            list.add(myPet);
+        }
+
+        //Now what happens when we take things out?
+        Pet anotherPet = petList.get(0);
+
+        //Java won't let me do this, the object might not be a Pet
+        //Pet yetAnotherPet = list.get(0);
+
+        // But if I am sure that it is really a Pet I can cast it to a Pet object
+        Pet yetAnotherPet = (Pet)list.get(0);
+
+
     }
 }
+
