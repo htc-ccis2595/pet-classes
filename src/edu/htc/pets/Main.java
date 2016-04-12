@@ -1,78 +1,48 @@
 package edu.htc.pets;
 
+import java.util.Scanner;
+import java.util.ArrayList;
+
 public class Main {
 
     public static void main(String[] args) {
 
-        // Create the cats
-        Cat[] myCats = new Cat[3];
+        Scanner scanner = new Scanner(System.in);
+        ArrayList<Pet> pets = new ArrayList<Pet>();
 
-        Cat cat = new Cat();
-        cat.setAge(1);
-        cat.setName("Jennyanydots");
-        myCats[0] = cat;
+        //ask the user to enter information for a pet
+        System.out.println("Do you want to add a cat or a dog?");
+        String petType = scanner.next();
+        while (!petType.equalsIgnoreCase("cat") && !petType.equalsIgnoreCase("Dog")) {
 
-        cat = new Cat();
-        cat.setAge(2);
-        cat.setName("Rum Tum Tugger");
-        myCats[1] = cat;
+            System.out.println("Sorry, you must enter either cat or dog.");
+            System.out.println("Do you want to add a cat or dog?");
+            petType = scanner.next();
+        }
+        //get the pets name
+        System.out.println("What should the pet's name be?");
+        String name = scanner.next();
 
-        cat = new Cat();
-        cat.setAge(20);
-        cat.setName("Deuteronomy");
-        myCats[2] = cat;
+        int age = 0;
+        while (age < 1) {
+            System.out.println("What should the pet's age be?");
+            try {
+                age = Integer.parseInt(scanner.next());
+            } catch (NumberFormatException exc) {
+                System.out.println("Enter a number you dingus!!");
+            }
 
-        // Print the cat info
-        System.out.println("Showing the cat info...");
-
-        for (int i=0; i<myCats.length; i++) {
-            Cat current = myCats[i];
-            System.out.println("Cat " + current.getName() + " is " + current.getAge() + " which is " + current.getHumanAge());
+        }
+        if (petType.equalsIgnoreCase("Cat")) {
+            Cat cat = new Cat(name);
+            pets.add(cat);
+        } else if(petType.equalsIgnoreCase("Dog")) {
+            Dog dog = new Dog(name);
+            pets.add(dog);
         }
 
 
-
-        // Code question 1.  Nameless cat works fine
-        Cat nameless = new Cat();
-        System.out.println();
-        System.out.println("Nameless Cat's name: " + nameless.getName());
-
-
-        // Create the dogs
-        Dog[] myDogs = new Dog[3];
-
-        Dog dog = new Dog("Argos");
-        dog.setAge(12);
-        myDogs[0] = dog;
-
-        dog = new Dog("Garm");
-        dog.setAge(1);
-        myDogs[1] = dog;
-
-        dog = new Dog("Ein");
-        dog.setAge(2);
-        myDogs[2] = dog;
-
-        // Code question 2.  Nameless dog is a compile error - name needed for constructor
-        //Dog namelessDog = new Dog();
-
-
-        // Print the dog info
-        System.out.println();
-        System.out.println("Showing the dog info...");
-
-        for (Dog current : myDogs) {
-            System.out.println("Dog " + current.getName() + " is " + current.getAge() + " which is " + current.getHumanAge());
         }
-
-
-        //Code Question 3 - Put a dog in the Cat[] - compile error, incompatible types
-        //myCats[0] = dog;
-
-        //Code Question 4 - Print a cat & dog
-        System.out.println();
-        System.out.println("Printing a cat, which has a toString function to print pretty: " + cat);
-        System.out.println("Printing a dog, which does not have a toString function: " + dog);
-        System.out.println();
     }
-}
+
+
