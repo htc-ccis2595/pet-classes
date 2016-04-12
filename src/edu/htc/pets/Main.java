@@ -1,164 +1,48 @@
 package edu.htc.pets;
 
+import java.util.Scanner;
 import java.util.ArrayList;
 
 public class Main {
 
     public static void main(String[] args) {
 
-        // Create the cats
-        Cat[] myCats = new Cat[3];
+        Scanner scanner = new Scanner(System.in);
+        ArrayList<Pet> pets = new ArrayList<Pet>();
 
-        Cat cat = new Cat("Jennyanydots");
-        cat.setAge(1);
-        myCats[0] = cat;
+        //ask the user to enter information for a pet
+        System.out.println("Do you want to add a cat or a dog?");
+        String petType = scanner.next();
+        while (!petType.equalsIgnoreCase("cat") && !petType.equalsIgnoreCase("Dog")) {
 
-        cat = new Cat("Rum Tum Tugger");
-        cat.setAge(2);
-        myCats[1] = cat;
-
-        cat = new Cat("Deuteronomy");
-        cat.setAge(20);
-        myCats[2] = cat;
-
-        // Print the cat info
-        System.out.println("Showing the cat info...");
-
-        for (int i=0; i<myCats.length; i++) {
-            Cat current = myCats[i];
-            System.out.println("Cat " + current.getName() + " is " + current.getAge() + " which is " + current.getHumanAge());
+            System.out.println("Sorry, you must enter either cat or dog.");
+            System.out.println("Do you want to add a cat or dog?");
+            petType = scanner.next();
         }
+        //get the pets name
+        System.out.println("What should the pet's name be?");
+        String name = scanner.next();
 
-        // Code question 1.  Nameless cat works fine
-        //Cat nameless = new Cat();  no longer works fine
-        //System.out.println();
-        //System.out.println("Nameless Cat's name: " + nameless.getName());
-
-        // Create the dogs
-        Dog[] myDogs = new Dog[3];
-
-        Dog dog = new Dog("Argos");
-        dog.setAge(12);
-        myDogs[0] = dog;
-
-        dog = new Dog("Garm");
-        dog.setAge(1);
-        myDogs[1] = dog;
-
-        dog = new Dog("Ein");
-        dog.setTrickName("Fetch");
-        dog.setAge(2);
-        myDogs[2] = dog;
-
-
-        Turtle[] myTurtles = new Turtle[3];
-
-        Turtle turtle = new Turtle("Romello");
-        turtle.setAge(15);
-        myTurtles[0] = turtle;
-
-        Turtle turtle1 = new Turtle("Randy");
-        turtle.setAge(12);
-        myTurtles[1] = turtle1;
-
-        Turtle turtle2 = new Turtle("Jordanian");
-        turtle.setAge(9);
-        myTurtles[2] = turtle2;
-
-
-
-        // Code question 2.  Nameless dog is a compile error - name needed for constructor
-        //Dog namelessDog = new Dog();
-
-
-        // Print the dog info
-        System.out.println();
-        System.out.println("Showing the dog info...");
-
-        for (Dog current : myDogs) {
-            System.out.println("Dog " + current.getName() + " is " + current.getAge() + " which is " + current.getHumanAge());
-        }
-
-        //Code Question 3 - Put a dog in the Cat[] - compile error, incompatible types
-        //myCats[0] = dog;
-
-        //Code Question 4 - Print a cat & dog
-//        System.out.println();
-//        System.out.println("Printing a cat, which has a toString function to print pretty: " + cat);
-//        System.out.println("Printing a dog, which does not have a toString function: " + dog);
-//        System.out.println();
-
-
-        // New Stuff
-        System.out.println();
-        System.out.println("Printing all the pets: ");
-        Pet[] myPets = new Pet[9];
-        myPets[0] = myCats[0];
-        myPets[1] = myCats[1];
-        myPets[2] = myCats[2];
-        myPets[3] = myDogs[0];
-        myPets[4] = myDogs[1];
-        myPets[5] = myDogs[2];
-        myPets[6] = myTurtles[0];
-        myPets[7] = myTurtles[1];
-        myPets[8] = myTurtles[2];
-
-        for (Pet current : myPets) {
-            System.out.println("Pet " + current.getName() + " is " + current.getAge() + " which is " + current.getHumanAge() + " human years.");
-            if(current instanceof Audible) {
-                Audible currentpet = (Audible)current;
-                currentpet.makeSound();
+        int age = 0;
+        while (age < 1) {
+            System.out.println("What should the pet's age be?");
+            try {
+                age = Integer.parseInt(scanner.next());
+            } catch (NumberFormatException exc) {
+                System.out.println("Enter a number you dingus!!");
             }
 
-
-            //If I'm a dog, print my trick
-            if (current instanceof Dog){
-                Dog curDog = (Dog)current;
-                curDog.getTrickName();
-            }
-
-            //This causes an error when we hit our first Dog object - always check using instanceof before casting
-            //Cat curCat = (Cat)current;
-
+        }
+        if (petType.equalsIgnoreCase("Cat")) {
+            Cat cat = new Cat(name);
+            pets.add(cat);
+        } else if(petType.equalsIgnoreCase("Dog")) {
+            Dog dog = new Dog(name);
+            pets.add(dog);
         }
 
-        Pet somePet = myPets[3];
-        // Can't do this.  Only Dog objects have getTrickName method
-        //somePet.getTrickName();
 
-        //Make a generic Pet
-        System.out.println();
-        // Can't do this now that the Pet class is abstract
-        //System.out.println("Printing the generic Pet: ");
-        //Pet something = new Pet("Mystery Pet");
-        //System.out.println(something);
-
-
-        //Put the Pets into an ArrayList of Pets
-        ArrayList<Pet> petList = new ArrayList<Pet>();
-        for (Pet myPet : myPets){
-            petList.add(myPet);
         }
-
-        //Put the Pets into an ArrayList of Objects (not Pet)
-        ArrayList list = new ArrayList();
-        for (Pet myPet : myPets){
-            list.add(myPet);
-        }
-
-        //Now what happens when we take things out?
-        Pet anotherPet = petList.get(0);
-
-        //Java won't let me do this, the object might not be a Pet
-        //Pet yetAnotherPet = list.get(0);
-
-        // But if I am sure that it is really a Pet I can cast it to a Pet object
-        Pet yetAnotherPet = (Pet)list.get(0);
-
-
-
-
-
-
     }
-}
+
+
